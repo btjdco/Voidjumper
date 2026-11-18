@@ -15,3 +15,39 @@ void AAI_SmartLinkProxy::GetSmartLinkPoints(FVector& Start, FVector& End) const
         SmartLink->GetLinkData(Start, End, Direction);
     }
 }
+
+float AAI_SmartLinkProxy::GetSmartLinkHeight() const
+{
+    const UNavLinkCustomComponent* SmartLink = GetSmartLinkComp();
+
+    if (!SmartLink)
+    {
+        return 0.0f;
+    }
+
+    FVector Start;
+    FVector End;
+    ENavLinkDirection::Type Direction;
+
+    SmartLink->GetLinkData(Start, End, Direction);
+
+    return FMath::Abs(End.Z - Start.Z);
+}
+
+void AAI_SmartLinkProxy::SetSmartLinkPoints(FVector Start, FVector End)
+{
+    UNavLinkCustomComponent* SmartLink = GetSmartLinkComp();
+
+    if (!SmartLink)
+    {
+        return;
+    }
+
+    FVector CurrentStart;
+    FVector CurrentEnd;
+    ENavLinkDirection::Type Direction;
+
+    SmartLink->GetLinkData(CurrentStart, CurrentEnd, Direction);
+    SmartLink->SetLinkData(Start, End, Direction);
+}
+

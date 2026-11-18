@@ -12,6 +12,7 @@ public class Last_Drop : ModuleRules
                 new string[] 
                 {
                     "Core", "Engine", "InputCore", "EnhancedInput","CoreUObject",
+                    "NavigationSystem",
                 }
             );
 

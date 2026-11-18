@@ -17,4 +17,10 @@ class LAST_DROP_API AAI_SmartLinkProxy : public ANavLinkProxy
 public:
 	UFUNCTION(BlueprintPure, Category = "Smart Link")
 	void GetSmartLinkPoints(FVector& Start, FVector& End) const;
+
+	UFUNCTION(BlueprintPure, Category = "Smart Link")
+	float GetSmartLinkHeight() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Smart Link")
+	void SetSmartLinkPoints(FVector Start, FVector End);
 };
